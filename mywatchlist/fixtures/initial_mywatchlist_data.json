@@ -37,7 +37,7 @@
     "pk":4,
     "fields":{
         "watched":true,
-        "title":"Kiki’s Delivery Service",
+        "title":"Kiki's Delivery Service",
         "rating": 5,
         "release_date": "2018-01-12",
         "review" : "Adalah sebuah tradisi bagi semua penyihir muda yang baru beranjak 13 tahun untuk meninggalkan keluarga mereka saat malam bulan purnama dan pergi menjelajahi dunia untuk mengaplikasikan ilmu sihir mereka. "
@@ -81,7 +81,7 @@
     "pk":8,
     "fields":{
         "watched":true,
-        "title":"Howl’s Moving Castle",
+        "title":"Howl's Moving Castle",
         "rating": 5,
         "release_date": "2004-11-20",
         "review" : "Sophie, gadis pekerja keras, bertemu dengan penyihir asing tampan, Howl. Penyihir lain melihat kebahagiaan Sophie dan mengutuknya menjadi tua. Sophie melarikan diri ke benteng sihir Howl."
