@@ -15,10 +15,109 @@
     "pk":2,
     "fields":{
         "watched":true,
+        "title":"Only Yesterday",
+        "rating": 5,
+        "release_date": "1991-07-20",
+        "review" : "Only Yesterday adalah film Jepang produksi tahun 1991 yang skenarionya ditulis dan disutradarai oleh Isao Takahata, berdasarkan manga dengan judul yang sama karya Hotaru Okamoto dan Yuko Tone. Toshio Suzuki memproduseri film ini dan dibiayai bersama Studio Ghibli."
+    }
+},
+{
+    "model":"mywatchlist.mywatchlist",
+    "pk":3,
+    "fields":{
+        "watched":true,
         "title":"Castle in the Sky",
         "rating": 5,
         "release_date": "1986-08-02",
         "review" : "Sebuah petulangan seru dimulai ketika Pazu, seorang murid insinyur, memata-matai seorang gadis yang turun dari langit bernama Sheeta. Pertemuan mereka berdua memulai kisah pencarian terhadap Laputa, sebuah kastil terbang yang menyimpan kekuatan legendaris. "
+    }
+},
+{
+    "model":"mywatchlist.mywatchlist",
+    "pk":4,
+    "fields":{
+        "watched":true,
+        "title":"Kiki's Delivery Service",
+        "rating": 5,
+        "release_date": "2018-01-12",
+        "review" : "Adalah sebuah tradisi bagi semua penyihir muda yang baru beranjak 13 tahun untuk meninggalkan keluarga mereka saat malam bulan purnama dan pergi menjelajahi dunia untuk mengaplikasikan ilmu sihir mereka."
+    }
+},
+{
+    "model":"mywatchlist.mywatchlist",
+    "pk":5,
+    "fields":{
+        "watched":true,
+        "title":"Princess Mononoke",
+        "rating": 5,
+        "release_date": "2017-08-01",
+        "review" : "Terjangkit oleh kutukan mematikan, pejuang muda Ashitaka berkelana menuju barat untuk mencari penyembuh kutukannya. Di sana, ia terbentur ke dalam sebuah konflik antara Lady Eboshi dan orang-orang dari Kota Besi dengan Princess Mononoke, seorang gadis yang dibesarkan oleh serigala."
+    }
+},
+{
+    "model":"mywatchlist.mywatchlist",
+    "pk":6,
+    "fields":{
+        "watched":false,
+        "title":"Castle in the Sky",
+        "rating": 5,
+        "release_date": "1986-08-02",
+        "review" : "Sebuah petulangan seru dimulai ketika Pazu, seorang murid insinyur, memata-matai seorang gadis yang turun dari langit bernama Sheeta. Pertemuan mereka berdua memulai kisah pencarian terhadap Laputa, sebuah kastil terbang yang menyimpan kekuatan legendaris. "
+    }
+},
+{
+    "model":"mywatchlist.mywatchlist",
+    "pk":7,
+    "fields":{
+        "watched":true,
+        "title":"Castle in the Sky",
+        "rating": 5,
+        "release_date": "1986-08-02",
+        "review" : "Sebuah petulangan seru dimulai ketika Pazu, seorang murid insinyur, memata-matai seorang gadis yang turun dari langit bernama Sheeta. Pertemuan mereka berdua memulai kisah pencarian terhadap Laputa, sebuah kastil terbang yang menyimpan kekuatan legendaris. "
+    }
+},
+{
+    "model":"mywatchlist.mywatchlist",
+    "pk":8,
+    "fields":{
+        "watched":true,
+        "title":"The Cat Returns",
+        "rating": 5,
+        "release_date": "1986-08-02",
+        "review" : "The Cat Returns merupakan sebuah film animasi fantasi Jepang yang dirilis pada tahun 2002 oleh Studio Ghibli dan ditulis Reiko Yoshida berdasarkan manga The Cat Returns karya Aoi Hiiragi. Film ini disutradarai Hiroyuki Morita dan diproduseri Toshio Suzuki dan Nozomu Takahashi. "
+    }
+},
+{
+    "model":"mywatchlist.mywatchlist",
+    "pk":9,
+    "fields":{
+        "watched":true,
+        "title":"Howl's Moving Castle",
+        "rating": 5,
+        "release_date": "1986-08-02",
+        "review" : "Sophie, gadis pekerja keras, bertemu dengan penyihir asing tampan, Howl. Penyihir lain melihat kebahagiaan Sophie dan mengutuknya menjadi tua. Sophie melarikan diri ke benteng sihir Howl"
+    }
+},
+{
+    "model":"mywatchlist.mywatchlist",
+    "pk":10,
+    "fields":{
+        "watched":true,
+        "title":"Castle in the Sky",
+        "rating": 5,
+        "release_date": "1986-08-02",
+        "review" : "Dikirim dari rumah yatim piatu di kota menuju sebuah kota kecil di pinggiran laut di Hokkaido, Anna bermimpi untuk dapat melarikan diri dari sekelilingnya. Ia percaya ia berada di luar lingkaran sihir tak terlihat yang merupakan bagian dari orang-orang, dan menutup dirinya dari semua orang."
+    }
+},
+{
+    "model":"mywatchlist.mywatchlist",
+    "pk":2,
+    "fields":{
+        "watched":true,
+        "title":"Castle in the Sky",
+        "rating": 5,
+        "release_date": "1986-08-02",
+        "review" : "Berlatar belakang di Yokohama tahun 1963, From Up On Poppy Hill adalah sebuah kisah cinta di mana karakter utamanya adalah siswa SMA yang akan menjadi generasi pertama dari Jepang yang baru. Seiring dengan memulihnya Jepang dari kehancuran yang dihadapinya akibat Perang Dunia II"
     }
 }
 ]
