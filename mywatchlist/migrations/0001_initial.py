@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('watched', models.BooleanField()),
                 ('title', models.TextField()),
                 ('rating', models.IntegerField()),
-                ('release_date', models.TimeField()),
+                ('release_date', models.TextField()),
                 ('review', models.TextField()),
             ],
         ),
