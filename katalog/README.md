@@ -3,6 +3,8 @@ link apps :   https://task2pbp.herokuapp.com/katalog/
 ![Screenshot 2022-09-14 203539](https://user-images.githubusercontent.com/110367908/190168930-f13b0a34-6f48-4be8-acca-8222b6644665.jpg)
 # DEFINISI #
 
+
+
 URL: Meskipun dimungkinkan untuk memproses permintaan dari setiap URL melalui satu fungsi, jauh lebih mudah untuk menulis fungsi tampilan terpisah untuk menangani setiap sumber daya. URL mapper digunakan untuk mengarahkan HTTP  request ke tampilan yang sesuai berdasarkan URL request. URL mapper juga dapat mencocokkan pola string atau angka tertentu yang muncul di URL dan meneruskannya ke fungsi tampilan sebagai data.
 view: view adalah fungsi pengendali request, yang menerima HTTP request dan mengembalikan respons HTTP. View mengakses data yang diperlukan untuk memenuhi permintaan melalui model, dan mendelegasikan pemformatan respons ke template.
 Model: Model adalah objek Python yang mendefinisikan struktur data aplikasi, dan menyediakan mekanisme untuk mengelola (menambah, memodifikasi, menghapus) dan meminta catatan dalam database.
@@ -35,5 +37,13 @@ Sistem template memungkinkan Anda menentukan struktur dokumen keluaran untuk dat
 
 ![5](https://user-images.githubusercontent.com/110367908/190168364-87bc7943-aa63-4d7c-b136-3583aba026fa.png)
 
+
+# Mengapa perlu Virtual Environment? #
+Dalam menjalankan sistem,  virtual environment diperlukan agar berjalan di lingkungan terisolasi. Tujuan dari virtual environtment juga berguna untuk maintain dependensi project yang berbeda-beda. Dengan demikian juga tujuan dari melakukan virtual environment pada sistem bertujuan untuk menghindari error yang memungkinkan. Sehingga dapat disimpulkan bahwa virtual environment diperlukan untuk menghindri permasalahan yang memungkinkan terjadi dalam proses pengembangan. 
+
+
+# Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual Environtment ? #
+
+Bisa, dalam kondisi hanya pada lingkungan local server. Namun demikian tidak menggunakan virtual environment juga akan memungkinkan potensi yang terjadi seperti error ataupun kesalahan lain yang bisa menghambat pengembang. Kesimpulannya kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual Environtment.
 
 
