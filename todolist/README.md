@@ -7,6 +7,7 @@
  The Cross-Site Request Forgery (CSRF) memaksa pengguna akhir untuk melakukan tindakan yang tidak diinginkan pada aplikasi web di mana mereka telah mengautentikasi diri mereka sendiri.Penyerang menggunakan status terotentikasi pengguna untuk keuntungan mereka dengan mengubah permintaan pengguna, yang mendorong pengguna untuk melakukan tindakan yang tidak ingin mereka lakukan. Jika serangan berhasil pada akun administratif, itu dapat membahayakan seluruh aplikasi web.CSRF adalah serangan umum, jadi Django memiliki implementasi yang sangat sederhana untuk meniadakan serangan ini. Django memiliki tag {% csrf_token %} yang diimplementasikan untuk menghindari serangan berbahaya. Kode ini menghasilkan token di sisi server saat merender halaman dan memastikan untuk memeriksa ulang token ini untuk setiap permintaan yang masuk kembali. Jika permintaan yang masuk tidak berisi token, permintaan tersebut tidak akan dieksekusi. Tag {% csrf_token %} dalam bahasa template Django disisipkan di dalam formulir. Dengan tambahan kode ini, serangan CSRF dapat dihindari, sehingga menjamin keamanan permintaan posting dari pengguna ke server. Tentunya dengan kata lain apabila kode {% csrf_token %} tidak disisipkan maka akan memungkinkan terjadinya CSRF. 
 
  # Apakah kita dapat membuat elemen <form> secara manual (tanpa menggunakan generator seperti {{ form.as_table }})? Jelaskan secara gambaran besar bagaimana cara membuat <form> secara manual. 
+ Untuk membuat form secara manual maka perlu membuat forms dari Django 
  
  ### 1. Membuat file form.py dengan command
  
@@ -59,7 +60,7 @@
  6.  Membuat html untuk tampilan todolist, login, logout, dan new_task
  7.  Migrasi skema model ke database Django lokal dengan command python manage.py makemigrations
  8.  Menerapkan skema yang di buat dalam database Django lokal dengan command python manage.py migrate 
- 9.  Melakukan add, commit, dan push ke  ke repositori GitHub dan deploy di Heroku dan membuat 2 akun dummy beserta 3 dummy data pada website hasil deployment
+ 9.  Melakukan add, commit, dan push ke repositori GitHub dan deploy di Heroku dan membuat 2 akun dummy beserta 3 dummy data pada website hasil deployment
 
 
 
