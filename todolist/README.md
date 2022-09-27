@@ -1,4 +1,6 @@
- link deploy : https://task2pbp.herokuapp.com/todolist/ 
+ link deploy : https://task2pbp.herokuapp.com/todolist/login/
+ Nama : Ramanti Prajna Pratisthita
+ PBP-B
  
  
  # Apa kegunaan {% csrf_token %} pada elemen <form>? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen <form>? 
