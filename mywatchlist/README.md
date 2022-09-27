@@ -1,10 +1,10 @@
 # **link deploy** 
 
-**apps** :
+**apps** : https://task2pbp.herokuapp.com/mywatchlist/
 
-html :
-json :
-xml :
+html :https://task2pbp.herokuapp.com/mywatchlist/html/
+json : https://task2pbp.herokuapp.com/mywatchlist/json/
+xml :https://task2pbp.herokuapp.com/mywatchlist/xml/
 
 
 

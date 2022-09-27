@@ -37,6 +37,13 @@ Sistem template memungkinkan Anda menentukan struktur dokumen keluaran untuk dat
 
 ![5](https://user-images.githubusercontent.com/110367908/190168364-87bc7943-aa63-4d7c-b136-3583aba026fa.png)
 
+# Mengapa perlu Virtual Environment? #
+Dalam menjalankan sistem,  virtual environment diperlukan agar berjalan di lingkungan terisolasi. Tujuan dari virtual environtment juga berguna untuk maintain dependensi project yang berbeda-beda. Dengan demikian juga tujuan dari melakukan virtual environment pada sistem bertujuan untuk menghindari error yang memungkinkan. Sehingga dapat disimpulkan bahwa virtual environment diperlukan untuk menghindri permasalahan yang memungkinkan terjadi dalam proses pengembangan. 
+
+
+# Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual Environtment ? #
+
+Bisa, dalam kondisi hanya pada lingkungan local server. Namun demikian tidak menggunakan virtual environment juga akan memungkinkan potensi yang terjadi seperti error ataupun kesalahan lain yang bisa menghambat pengembang. Kesimpulannya kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual Environtment.
 
 # Mengapa perlu Virtual Environment? #
 Dalam menjalankan sistem,  virtual environment diperlukan agar berjalan di lingkungan terisolasi. Tujuan dari virtual environtment juga berguna untuk maintain dependensi project yang berbeda-beda. Dengan demikian juga tujuan dari melakukan virtual environment pada sistem bertujuan untuk menghindari error yang memungkinkan. Sehingga dapat disimpulkan bahwa virtual environment diperlukan untuk menghindri permasalahan yang memungkinkan terjadi dalam proses pengembangan. 
