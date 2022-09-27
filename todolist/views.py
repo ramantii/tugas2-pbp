@@ -12,12 +12,15 @@ from django.urls import reverse
 
 
 
+
+
 # Create your views here.
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
     data = Todolist.objects.all()
+    username = request.user.username
     context = {
-        'nama': 'Ramanti',
+        'name' : username,
         'last_login': request.COOKIES['last_login'],
         'todolists': data
     }
@@ -31,7 +34,7 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Akun telah berhasil dibuat!')
-            return redirect('wishlist:login')
+            return redirect('todolist:login')
     
     context = {'form':form}
     return render(request, 'register.html', context)
@@ -56,3 +59,41 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('todolist:login'))
     response.delete_cookie('last_login')
     return response
+
+def create_task(request):
+    if request.method == "POST":
+        user = request.user
+        date = request.POST.get("date")
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        create_task = Todolist(user=user,date=date, title=title, description=description)
+        create_task.save()
+        return redirect('todolist:show_todolist')
+
+    return render(request, "new_task.html")
+
+
+def update_task(request,id):
+    task = Todolist.objects.get(pk=id )
+    if task.isfinished :
+        task.isfinished = False
+    else:
+        task.isfinished = True
+    task.save()
+    return redirect('todolist:show_todolist')
+# def finished(request, id ):
+#     item = Todolist.objects.get(pk=id )
+#     item.isfinished = True
+#     item.save()
+#     return redirect('todolist:show_todolist')
+
+# def unfinished(request, id ):
+#     item = Todolist.objects.get(pk=id )
+#     item.isfinished = False
+#     item.save()
+#     return redirect('todolist:show_todolist')
+
+def delete(request,id):
+    todolist = Todolist.objects.get(pk= id)
+    todolist.delete()
+    return redirect('todolist:show_todolist')
