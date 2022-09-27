@@ -17,7 +17,8 @@ from django.urls import reverse
 # Create your views here.
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
-    data = Todolist.objects.all()
+    userid= request.user.id
+    data = Todolist.objects.filter(pk = userid)
     username = request.user.username
     context = {
         'name' : username,
@@ -81,17 +82,6 @@ def update_task(request,id):
         task.isfinished = True
     task.save()
     return redirect('todolist:show_todolist')
-# def finished(request, id ):
-#     item = Todolist.objects.get(pk=id )
-#     item.isfinished = True
-#     item.save()
-#     return redirect('todolist:show_todolist')
-
-# def unfinished(request, id ):
-#     item = Todolist.objects.get(pk=id )
-#     item.isfinished = False
-#     item.save()
-#     return redirect('todolist:show_todolist')
 
 def delete(request,id):
     todolist = Todolist.objects.get(pk= id)
