@@ -12,13 +12,10 @@ from django.urls import reverse
 
 
 
-
-
 # Create your views here.
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
-    userid= request.user.id
-    data = Todolist.objects.filter(pk = userid)
+    data = Todolist.objects.filter(user=request.user)
     username = request.user.username
     context = {
         'name' : username,
