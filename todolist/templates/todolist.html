@@ -1,43 +1,56 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
 
-<h1>TUGAS 4 PBP TODOLIST</h1>
+{% block content %}
+<style>
+  .card:hover{
+    box-shadow: 4px 4px 2px rgb(108, 120, 130);
+    transform: scale(1.05);
+  }
+</style>
 
 
-<h3> Halo {{name}} </h3>
-<h5> Sesi terakhir login:{{ last_login }}</h5>
+<nav class="navbar" style="background-color: #433030;">
+   <h1 class="text-white  m-3">{{name}}'s TODOLIST</h1>
+</nav>
 
-<button>
-  <a href="{% url 'todolist:create-task' %}">Tambah Task Baru</a>
+
+
+
+  <h2 class="text-center m-5" style="font-weight: bold; font-size: larger;" > Just do this neverending todolist </h2>
+<h5 class="m-2"> Sesi terakhir login:{{ last_login }}</h5>
+
+
+<button button type="button" class="btn btn-secondary m-3 " style="background-color: #2c1c21;">
+  <a class="text-white text-decoration-none" href="{% url 'todolist:create-task' %}">Tambah Task Baru</a>
 </button>
 
-<table border="2">
-  <tr>
-    <th>Tanggal Pembuatan Task</th>
-    <th>Judul Task</th>
-    <th>Deskripsi task</th>
-    <th>Status</th>
-    <th>Update</th>
-    <th>Delete</th>
-  </tr>
-  {% for todolist in todolists %}
-  <tr>
-    <td>{{todolist.date}}</td>
-    <td>{{todolist.title}}</td>
-    <td>{{todolist.description}}</td>
-    <td>
-      {% if todolist.isfinished %} Selesai {% else %} Belum Selesai {% endif %}
-    </td>
-    <td>
-      <button><a href="{% url 'todolist:update-task' todolist.pk %}"> Update </a></button>
-    </td>
-    <td>
-      <button><a href="{% url 'todolist:delete-todolist' todolist.pk %}"> Delete </a></button>
-    </td>
-  </tr>
 
-  {% endfor %}
-</table>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+{% for todolist in todolists %}      
 
+<div class="card w-50 m-3 hover:scale-105" style="background-color: #cfa9a9; border-radius: 16px; max-width: 30rem; height: fit-content">
+  <div class="card-body">
+    <h5 class="card-title">{{todolist.title}}</h5>
+    
+    {% if todolist.isfinished %} <p class="card-text" style="color: #434f8a; font-weight: bold;">Selesai</p>
+     {% else %} <p class="card-text" style="color: #561a1a; font-weight: bold;" >Belum Selesai</p>
+    {% endif %}
+    
+    <p class="card-text">{{todolist.description}}</p>
+    <p class="card-text" style="font-size: 12px">{{todolist.date}}</p>
+    <a class="disabled" href="{% url 'todolist:update-task' todolist.pk %}" card-link>
+    <button class="btn btn-primary">Update Status</button>
+    </a>
+    <a class="disabled" href="{% url 'todolist:delete-todolist' todolist.pk %}"card-link>
+    <button class="btn btn-danger">Hapus</button>
+    </a>  
+  </div>
+</div>    
+
+{% endfor %}
+    
+ 
+
+<button type="button" class="btn btn-secondary m-3" style="background-color: #2c1c21;">
+  <a class="text-white text-decoration-none" href="{% url 'todolist:logout' %}">Logout</a></button>
 
 {% endblock content %}
