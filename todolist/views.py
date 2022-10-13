@@ -7,8 +7,11 @@ from django.contrib.auth import logout
 from todolist.models import Todolist
 from django.contrib.auth.decorators import login_required
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
+from django.core import serializers
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -70,17 +73,38 @@ def create_task(request):
 
     return render(request, "new_task.html")
 
-
+@csrf_exempt
 def update_task(request,id):
-    task = Todolist.objects.get(pk=id )
-    if task.isfinished :
-        task.isfinished = False
-    else:
-        task.isfinished = True
-    task.save()
-    return redirect('todolist:show_todolist')
+    item = Todolist.objects.get(pk=id)
+    finished = not item.isfinished
+    item.isfinished = finished
+    item.save()
+    return JsonResponse({"isfinished": finished})
 
+@csrf_exempt
 def delete(request,id):
     todolist = Todolist.objects.get(pk= id)
     todolist.delete()
     return redirect('todolist:show_todolist')
+
+@login_required(login_url='/todolist/login/')
+def get_todolist_json(request):
+    todolist_item = Todolist.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", todolist_item),content_type="application/json")
+
+@login_required(login_url='/todolist/login/')
+@csrf_exempt
+def add_todolist_item(request):
+    if request.method == "POST":
+        user=request.user
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+
+        new_todolist = Todolist(user=user,title=title,description=description)
+        new_todolist.save()
+
+    return JsonResponse({"pk": new_todolist.pk, "fields":{"title":new_todolist.title,"description": new_todolist.description,"isfinished": new_todolist.isfinished}})
+
+
+
+    

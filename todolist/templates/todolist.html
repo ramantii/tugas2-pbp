@@ -1,54 +1,151 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% block content %}
+{% block meta %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $.get(window.location.href + "json/", function (data) {
+      for (idx = 0; idx < data.length; idx++) {
+        getField(data[idx]);
+        deleteField(data[idx]);
+        updateField(data[idx]);
+      }
+    });
+
+    $("#create-new").submit(function (event) {
+      event.preventDefault();
+      $.post(window.location.href + "add/", {
+        title: $("#title").val(),
+        description: $("#description").val(),
+      }).done(function (data) {
+        getField(data);
+        deleteField(data);
+        statusUpdate(data);
+        $("#title").val(""), $("#description").val("");
+        const sectionCards = document.getElementById("content");
+        sectionCards.insertAdjacentHTML("beforestart", $(`#${data.pk}-card`));
+      });
+    });
+
+    function getField(data) {
+      $("#content").append(
+        `
+        <div id="${data.pk}-card" class="card hover-overlay" style="border-radius: 25rem; 15px; max-width:  height: fit-content; mx-5;">
+            <div class="card-body p-3">
+              <h5 class="card-title">${data.fields.title}</h5>
+              <p class="card-text" style="font-size: 17px" >${data.fields.description}</p>
+              <p class="card-text" style="font-size: 12px">${data.fields.date}</p>
+              <p id="${data.pk}-status" class="card-text">${
+                              data.fields.isfinished
+                                ? "selesai"
+                                : "belum selesai"
+                            }</p>
+    
+              <div class="flex justify-content-center">
+                <a id="${data.pk}-update" class="btn btn btn-primary mx-2">Update Task</a>
+                <a id="${data.pk}-delete" class="btn btn btn-danger">Delete Task</a>
+              </div>
+            </div>
+          </div>
+                  
+                `
+      );
+    }
+
+    function statusUpdate(data) {
+      $(`#${data.pk}-update`).click(function () {
+        $.post(window.location.href + `update-task/${data.pk}/`, {}).done(
+          (res) => {
+            const statusTodolist = res.isfinished
+              ? "selesai"
+              : "belum selesai";
+            $(`#${data.pk}-status`).text(statusTodolist);
+          }
+        );
+      });
+    }
+
+    function deleteField(data) {
+      $(`#${data.pk}-delete`).click(function () {
+        $.post(window.location.href + `delete-todolist/${data.pk}/`, {}).done(
+          (res) => {
+            $(`#${data.pk}-card`).fadeOut();
+          }
+        );
+      });
+    }
+
+    //button close
+  $(document).ready( function(){
+    $('.btn-close').click( function(){
+      $('.modal').toggle();
+    })
+  })
+
+  //button n
+  $(document).ready( function(){
+    $('.add-task').click( function(){
+      $('.modal').toggle();
+    })
+  })
+
+  const modalButton = document.getElementById('add-btn');
+  modalButton.click(() => {
+    alert(12);
+    $('.modal').toggle();
+  })  
+  });
+</script>
+
+  
 <style>
   .card:hover{
     box-shadow: 4px 4px 2px rgb(108, 120, 130);
     transform: scale(1.05);
   }
 </style>
+{% endblock meta %}
 
+{% block content %}
 
 <nav class="navbar" style="background-color: #433030;">
    <h1 class="text-white  m-3">{{name}}'s TODOLIST</h1>
 </nav>
 
-
-
-
   <h2 class="text-center m-5" style="font-weight: bold; font-size: larger;" > Just do this neverending todolist </h2>
 <h5 class="m-2"> Sesi terakhir login:{{ last_login }}</h5>
 
-
+<button id="add-btn" class="add-task btn btn-primary"> Add Task </button>
 <button button type="button" class="btn btn-secondary m-3 " style="background-color: #2c1c21;">
   <a class="text-white text-decoration-none" href="{% url 'todolist:create-task' %}">Tambah Task Baru</a>
 </button>
 
 
-{% for todolist in todolists %}      
 
-<div class="card w-50 m-3 hover:scale-105" style="background-color: #cfa9a9; border-radius: 16px; max-width: 30rem; height: fit-content">
-  <div class="card-body">
-    <h5 class="card-title">{{todolist.title}}</h5>
-    
-    {% if todolist.isfinished %} <p class="card-text" style="color: #434f8a; font-weight: bold;">Selesai</p>
-     {% else %} <p class="card-text" style="color: #561a1a; font-weight: bold;" >Belum Selesai</p>
-    {% endif %}
-    
-    <p class="card-text">{{todolist.description}}</p>
-    <p class="card-text" style="font-size: 12px">{{todolist.date}}</p>
-    <a class="disabled" href="{% url 'todolist:update-task' todolist.pk %}" card-link>
-    <button class="btn btn-primary">Update Status</button>
-    </a>
-    <a class="disabled" href="{% url 'todolist:delete-todolist' todolist.pk %}"card-link>
-    <button class="btn btn-danger">Hapus</button>
-    </a>  
+
+<!-- modal -->
+<div class="modal w-25 " style="background-color: #a98181;">
+  <h1 class="modal-title">Add New Task</h1>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <form method="POST" action="" id="create-new">
+  {% csrf_token %}
+  <div class="flex flex-col m-2">
+    <label class="form-label">Task</label>
+    <input id="title" placeholder="Create task" class="task form-control" required >
   </div>
-</div>    
 
-{% endfor %}
-    
- 
+  <div class="flex flex-col m-1">
+    <label class="form-label">Description</label>
+    <input id="description" placeholder="Deskripsi task" class="description form-control" required>
+  </div>
+ <input type="submit" name="submit" value="create">
+</form>
+</div>
+<div id="content" class="content"></div>
+
+
+
+
 
 <button type="button" class="btn btn-secondary m-3" style="background-color: #2c1c21;">
   <a class="text-white text-decoration-none" href="{% url 'todolist:logout' %}">Logout</a></button>
